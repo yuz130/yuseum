@@ -138,7 +138,7 @@ var main = (function ($) {
       _.$body = $("body");
 
       // Thumbnails.
-      _.$thumbnails = $("#thumbnails");
+      _.$thumbnails = $(".thumbnails");
 
       // Viewer.
       _.$viewer = $(
