@@ -2297,6 +2297,11 @@ body.is-preload #main .thumb {
   color: inherit;
 }
 
+#footer nav > h2 {
+  padding: 0;
+  margin: 0 0 1.5em 0;
+}
+
 #footer nav > h2 > a {
   border: 0;
 }
