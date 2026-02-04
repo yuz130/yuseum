@@ -2423,3 +2423,35 @@ body:not(.is-preload) #main article.latest {
 #main article.thumb:hover .image img {
   filter: contrast(1) brightness(1); /* ホバーした時だけ本来の明るさに */
 }
+
+/* --- スマホ画面（480px以下）の調整 --- */
+@media screen and (max-width: 480px) {
+  /* 1. 画像を中央に配置 */
+  #main article.latest {
+    width: 90% !important; /* スマホでは少し広めに */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important; /* 中央寄せを有効にするため */
+    height: 50vh !important; /* スマホで見やすい高さに調整 */
+  }
+
+  /* 2. 縦書きラベルの解除と配置換え */
+  .vertical-label {
+    position: relative !important; /* 絶対配置を解除 */
+    left: auto !important;
+    top: auto !important;
+    width: 90% !important;
+    margin: 0 auto 1rem auto !important; /* 画像の上に配置 */
+
+    /* 縦書きを横書きに戻す */
+    transform: none !important;
+    writing-mode: horizontal-tb !important;
+
+    /* フォントサイズの調整（スマホで巨大すぎないように） */
+    font-size: 1.5rem !important;
+    height: auto !important;
+    text-align: left !important; /* 画像の左端と揃える */
+    letter-spacing: 0.1em;
+    color: #555 !important; /* スマホでは視認性を少し上げる */
+  }
+}
