@@ -2455,3 +2455,20 @@ body:not(.is-preload) #main article.latest {
     color: #555 !important; /* スマホでは視認性を少し上げる */
   }
 }
+
+/* --- スマホ画面（480px以下）の調整 --- */
+@media screen and (max-width: 480px) {
+  /* 1. ラベル（文字）を完全に消す */
+  .vertical-label {
+    display: none !important;
+  }
+
+  /* 2. 画像を中央に配置 */
+  #main article.latest {
+    width: 90% !important; /* スマホで見やすい幅 */
+    height: 60vh !important; /* スマホでの高さ */
+    margin: 5vh auto 0 auto !important; /* 上に5vhの余白、左右中央 */
+    float: none !important;
+    opacity: 1; /* フェードイン設定が干渉する場合に備えて */
+  }
+}
