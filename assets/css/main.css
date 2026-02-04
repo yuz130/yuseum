@@ -2317,8 +2317,8 @@ body.is-preload #main .thumb {
 
 /* latestクラスがついたarticleを横幅100%にする */
 #main > article.latest {
-  width: 100% !important;
-  height: 95vh !important; /* 高さを画面の60%くらいにして存在感を出す（お好みで調整） */
+  width: 60% !important;
+  height: 60vh !important; /* 高さを画面の60%くらいにして存在感を出す（お好みで調整） */
 }
 
 /* ラベルのスタイル調整 */
@@ -2341,4 +2341,85 @@ body.is-preload #main .thumb {
     width: 100% !important;
     height: 40vh !important;
   }
+}
+
+#main article.latest {
+  width: 85% !important;
+  height: 80vh !important;
+  margin-top: 7.5vh;
+  margin-left: 0 !important; /* 左に寄せて右側に15%の空白を作る */
+  /* あるいは margin-left: auto !important; で右寄せ */
+}
+
+/* 右端の外側に縦書き（回転）で配置 */
+.vertical-label {
+  position: absolute !important;
+  /* 位置：画像の幅85%のすぐ右 */
+  left: 46% !important;
+  /* 上位置：画像のマージン7.5vhに合わせる */
+  top: 6.7vh !important;
+
+  /* サイズ：高さ（画像の80vh）をフォントサイズに反映 */
+  height: 80vh !important;
+  line-height: 1 !important;
+
+  /* 90度回転：起点を左上にし、時計回りに回転 */
+  transform-origin: top left;
+  transform: rotate(90deg) translateY(-100%);
+
+  /* フォント設定：画像の高さに合わせるための特殊な計算 */
+  /* 文字数に合わせて調整が必要ですが、まずは大きめに設定 */
+  font-size: 9.5vh !important;
+  font-weight: 900 !important; /* 迫力を出すために太めに */
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  /* 色：背景よりわずかに明るい（#1a1a1aなど） */
+  color: #333 !important;
+
+  letter-spacing: -0.05em; /* 文字間を詰めるとよりグラフィカルになります */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- LATEST と 縦書きラベルの同期アニメーション --- */
+
+/* 1. 初期状態：透明にして少し横にずらしておく */
+.vertical-label,
+#main article.latest {
+  opacity: 0;
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s ease !important;
+}
+
+/* 2. 縦書きラベルの初期位置（既存のtransformに透明度を合わせる） */
+.vertical-label {
+  transform: rotate(90deg) translateY(-100%) translateX(-20px);
+}
+
+/* 3. 画像の初期位置（少しだけ浮き上がらせる） */
+#main article.latest {
+  transform: translateY(10px);
+}
+
+/* 4. ロード完了時（is-preloadが外れた時）の状態 */
+body:not(.is-preload) .vertical-label {
+  opacity: 1;
+  transform: rotate(90deg) translateY(-100%) translateX(0);
+}
+
+body:not(.is-preload) #main article.latest {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 画像にギャラリーらしい深みを与える */
+#main article.thumb .image img {
+  filter: contrast(1.05) brightness(0.95); /* わずかにコントラストを上げ、輝度を下げる */
+  transition: filter 0.5s ease;
+}
+
+#main article.thumb:hover .image img {
+  filter: contrast(1) brightness(1); /* ホバーした時だけ本来の明るさに */
 }
