@@ -2472,3 +2472,23 @@ body:not(.is-preload) #main article.latest {
     opacity: 1; /* フェードイン設定が干渉する場合に備えて */
   }
 }
+
+/* サムネイルのビネット効果（周辺減光） */
+#main article.thumb .image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 内側に向かって黒いグラデーションをかける */
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
+  pointer-events: none; /* クリックを阻害しない */
+  transition: box-shadow 0.5s ease;
+  z-index: 1;
+}
+
+/* ホバーした時にビネットを少し弱める（お好みで） */
+#main article.thumb:hover .image::after {
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+}
