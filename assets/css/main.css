@@ -2312,3 +2312,33 @@ body.is-preload #main .thumb {
   transition-property: opacity;
   transition-duration: 0.5s;
 }
+
+/* --- Multiverse専用: LATESTを1枚にする設定 --- */
+
+/* latestクラスがついたarticleを横幅100%にする */
+#main > article.latest {
+  width: 100% !important;
+  height: 95vh !important; /* 高さを画面の60%くらいにして存在感を出す（お好みで調整） */
+}
+
+/* ラベルのスタイル調整 */
+.cat-label-fixed {
+  width: 100%;
+  text-align: right;
+  padding: 3rem 1.5rem 1rem 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  color: #ffffff;
+  clear: both;
+}
+
+/* スマホでは100%に戻るようにする */
+@media screen and (max-width: 480px) {
+  #main > article.latest,
+  #main > article.item-8,
+  #main > article.item-16 {
+    width: 100% !important;
+    height: 40vh !important;
+  }
+}
